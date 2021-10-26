@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ProductDisplay from "./ProductDisplay";
 import CartDisplay from "./CartDisplay";
 
@@ -14,14 +14,17 @@ const cart=[]
 
 const KioskContainer = () =>{
 
-    const addCart = ()=>{
-        console.log("addCart....")
+    const [cartState, setCartState] = useState(cart)
+
+    const addCart = (product)=>{
+        console.log("addCart....", product)
+        setCartState([...cartState, product])
     }
 
     return(
         <div>
             <ProductDisplay products={products} addCart={addCart}></ProductDisplay>
-            <CartDisplay cart={cart}></CartDisplay>
+            <CartDisplay cart={cartState}></CartDisplay>
         </div>
     )
 }
